@@ -37,7 +37,7 @@ def test_stationarity(timeseries):
 
 rcParams['figure.figsize'] = 15, 6
 
-dateparse = lambda dates: pd.datetime.strptime(dates, '%Y-%m-%d')
+dateparse = lambda dates: pd.datetime.strptime(dates, '%Y-%m')
 data = pd.read_csv('data.csv', parse_dates=True, index_col='date',date_parser=dateparse)
 
 
@@ -84,42 +84,34 @@ for p in range(pmax+1):
   tmp = []
   for q in range(qmax+1):
     try:  #存在部分报错，所以用try来跳过报错。
-      tmp.append(ARIMA(ts, (p,1,q)).fit().bic)
+      tmp.append(ARIMA(ts, (p,2,q)).fit().bic)
     except:
       tmp.append(None)
   bic_matrix.append(tmp)
 
 #从中可以找出最小值
 bic_matrix = pd.DataFrame(bic_matrix)
-#print  bic_matrix
+print  bic_matrix
 #先用stack展平，然后用idxmin找出最小值位置。
 p,q = bic_matrix.stack().idxmin() 
 print(u'\n\n BIC最小的p值和q值为：%s、%s' %(p,q))
 
 
 print('\n\n下面对比ts_diff与arima模型拟合出来的结果') 
-model = ARIMA(ts, order=(p, 1, q))  
+model = ARIMA(ts, order=(2, 2, 2))  
 results_ARIMA = model.fit(disp=-1)  
 plt.plot(ts_diff)
 plt.plot(results_ARIMA.fittedvalues, color='red')
 plt.title('RSS: %.4f'% sum((results_ARIMA.fittedvalues-ts_diff)**2))
 plt.show()
 
-
-
-
-
-predictions_ARIMA_diff = pd.Series(results_ARIMA.fittedvalues, copy=True)
-#print predictions_ARIMA_diff.head()
-
-predictions_ARIMA_diff_cumsum = predictions_ARIMA_diff.cumsum()
-#print predictions_ARIMA_diff_cumsum.head()
-
-predictions_ARIMA = pd.Series(ts.ix[0], index=ts.index)
-predictions_ARIMA = predictions_ARIMA.add(predictions_ARIMA_diff_cumsum,fill_value=0)
-#print predictions_ARIMA_log.head()
  
-plt.plot(ts)
-plt.plot(predictions_ARIMA)
-plt.title('RMSE: %.4f'% np.sqrt(sum((predictions_ARIMA-ts)**2)/len(ts)))
+predata = results_ARIMA.predict('2017-01-01', '2027-09-01', dynamic=True)
+print predata 
+ 
+forecast_dta = results_ARIMA.forecast(30)[0]   #forecast  的值是ts  不是差分
+print forecast_dta
+ 
+ 
+plt.plot(forecast_dta)
 plt.show()

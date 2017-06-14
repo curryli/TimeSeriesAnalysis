@@ -44,7 +44,7 @@ data = pd.read_csv('SW_all.csv', parse_dates=True, index_col='date',date_parser=
 
 #ts = data[u'Z']
 #ts = np.log(data[u'SW_large'])
-ts = data[u'SW_large']
+ts = data[u'SW_large']['2015-01-01':'2016-08-01']
 
 moving_avg = pd.rolling_mean(ts,12)
 #plt.plot(ts)
@@ -56,9 +56,9 @@ expwighted_avg = pd.ewma(ts, halflife=12)
 #plt.plot(expwighted_avg, color='red')
 #plt.show()
 
-#ts_diff = ts - expwighted_avg
+ts_diff = ts - expwighted_avg
 #ts_diff = ts - moving_avg
-ts_diff = ts.diff()#.diff()#.diff()
+#ts_diff = ts.diff()#.diff()#.diff()
 
 ts_diff.dropna(inplace=True)
 
@@ -114,7 +114,7 @@ print('\n\n下面对比ts_diff与arima模型拟合出来的结果')
 #model = ARIMA(ts, order=(p, 1, q))  
 
 
-model = ARIMA(ts, order=(7, 1, 7))  
+model = ARIMA(ts, order=(p, 1, q))  
 
 results_ARIMA = model.fit(disp=-1)    #fit  返回ARIMAResults 类型。 ARIMAResults类型不直接面对用户 
 plt.plot(ts_diff)

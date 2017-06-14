@@ -9,7 +9,6 @@ from statsmodels.tsa.seasonal import seasonal_decompose
 from statsmodels.tsa.stattools import acf, pacf
 from statsmodels.tsa.arima_model import ARIMA
 from statsmodels.stats.diagnostic import acorr_ljungbox
-#from statsmodels.tsa.arima_model import ARIMAResults
 
 def test_stationarity(timeseries):
     
@@ -39,33 +38,27 @@ def test_stationarity(timeseries):
 rcParams['figure.figsize'] = 15, 6
 
 dateparse = lambda dates: pd.datetime.strptime(dates, '%Y-%m-%d')
-data = pd.read_csv('SW_all.csv', parse_dates=True, index_col='date',date_parser=dateparse)
+data = pd.read_csv('sz.csv', parse_dates=True, index_col='date',date_parser=dateparse)
 
 
 #ts = data[u'Z']
 #ts = np.log(data[u'SW_large'])
-ts = data[u'SW_small']['2013-01-01':]
-
-
-moving_avg = pd.rolling_mean(ts,12)
-#plt.plot(ts)
-#plt.plot(moving_avg, color='red')
-#plt.show()
+ts = data[u'SW_large']['2016-03-01':]
  
-expwighted_avg = pd.ewma(ts, halflife=12)
-#plt.plot(ts)
-#plt.plot(expwighted_avg, color='red')
-#plt.show()
+
+expwighted_avg = pd.ewma(ts, halflife=15)
+plt.plot(ts)
+plt.plot(expwighted_avg, color='red')
+plt.show()
 
 #ts_diff = ts - expwighted_avg
-#ts_diff = ts - moving_avg
-ts_diff = ts.diff(2) 
 
+
+ts_diff = ts.diff()#.diff().diff()
 ts_diff.dropna(inplace=True)
 
 
-plt.title('ts_diff') 
-plt.plot(ts)
+plt.title('original ts') 
 plt.plot(ts_diff, color='red')
 plt.show()
 
@@ -81,11 +74,11 @@ test_stationarity(ts_diff)
 print('\n\n下面对ts_diff序列白噪声检验')
 P_result = acorr_ljungbox(ts_diff, lags=1)[1][0]
 print(P_result)
-#if(P_result<0.05):
-#    print('\n\nts_diff为平稳非白噪声序列,检验通过')
-#else:
-#    print('\n\nts_diff为白噪声序列,检验失败')
-#    sys.exit(0)
+if(P_result<0.05):
+    print('\n\nts_diff为平稳非白噪声序列,检验通过')
+else:
+    print('\n\nts_diff为白噪声序列,检验失败')
+    #sys.exit(0)
     
 
 #简单点一般最大值取2就够了
@@ -112,7 +105,7 @@ print(u'\n\n BIC最小的p值和q值为：%s、%s' %(p,q))
 
 
 print('\n\n下面对比ts_diff与arima模型拟合出来的结果') 
-model = ARIMA(ts, order=(p, 2, q))  
+model = ARIMA(ts, order=(3, 2, 3))  
 results_ARIMA = model.fit(disp=-1)  
 plt.plot(ts_diff)
 plt.plot(results_ARIMA.fittedvalues, color='red')
@@ -120,32 +113,20 @@ plt.title('RSS: %.4f'% sum((results_ARIMA.fittedvalues-ts_diff)**2))
 plt.show()
 
 
-predictions_ARIMA_init0 = pd.Series(ts.ix[0], index=ts.index)
- 
-predictions_ARIMA_diff_2 = pd.Series(results_ARIMA.fittedvalues, copy=True)
-#print predictions_ARIMA_diff_2.head()
-predictions_ARIMA_diff_2_cumsum = predictions_ARIMA_diff_2.cumsum()
-  
 
-predictions_ARIMA = 32 - predictions_ARIMA_diff_2_cumsum + predictions_ARIMA_diff_2
- 
+
+
+predictions_ARIMA_diff = pd.Series(results_ARIMA.fittedvalues, copy=True)
+#print predictions_ARIMA_diff.head()
+
+predictions_ARIMA_diff_cumsum = predictions_ARIMA_diff.cumsum()
+#print predictions_ARIMA_diff_cumsum.head()
+
+predictions_ARIMA = pd.Series(ts.ix[0], index=ts.index)
+predictions_ARIMA = predictions_ARIMA.add(predictions_ARIMA_diff_cumsum,fill_value=0)
 #print predictions_ARIMA_log.head()
  
 plt.plot(ts)
- 
-#plt.plot(predictions_ARIMA,'red')
-plt.plot(predictions_ARIMA ,'red')
- 
-plt.title('RMSE: %.4f'% np.sqrt(sum((predictions_ARIMA - ts)[2:]**2)/len(ts)))
+plt.plot(predictions_ARIMA)
+plt.title('RMSE: %.4f'% np.sqrt(sum((predictions_ARIMA-ts)**2)/len(ts)))
 plt.show()
-#summary = results_ARIMA.summary2() 
-#print(summary)
-
-##下面这个时间必须要在index_col='date' 里面
-predict_dta = results_ARIMA.predict('2017-01-26','2017-01-26', dynamic=True)
-print predict_dta
-
-forecast_dta = results_ARIMA.forecast(5)[0]
-print(forecast_dta)
-
- 
