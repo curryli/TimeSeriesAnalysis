@@ -75,7 +75,7 @@ else:
     
 
 #简单点一般最大值取2就够了
-pmax=2  
+pmax=2 
 qmax=2
 
 #bic矩阵
@@ -84,7 +84,7 @@ for p in range(pmax+1):
   tmp = []
   for q in range(qmax+1):
     try:  #存在部分报错，所以用try来跳过报错。
-      tmp.append(ARIMA(ts, (p,2,q)).fit().bic)
+      tmp.append(ARIMA(ts, (p,1,q)).fit().bic)
     except:
       tmp.append(None)
   bic_matrix.append(tmp)
@@ -98,7 +98,7 @@ print(u'\n\n BIC最小的p值和q值为：%s、%s' %(p,q))
 
 
 print('\n\n下面对比ts_diff与arima模型拟合出来的结果') 
-model = ARIMA(ts, order=(2, 2, 2))  
+model = ARIMA(ts, order=(p, 1, q))  
 results_ARIMA = model.fit(disp=-1)  
 plt.plot(ts_diff)
 plt.plot(results_ARIMA.fittedvalues, color='red')
@@ -106,8 +106,12 @@ plt.title('RSS: %.4f'% sum((results_ARIMA.fittedvalues-ts_diff)**2))
 plt.show()
 
  
-predata = results_ARIMA.predict('2017-01-01', '2027-09-01', dynamic=True)
+predata = results_ARIMA.predict('2011-01-01', '2017-09-01', dynamic=False)
+print "predata is :"
 print predata 
+plt.plot(ts)
+plt.plot(predata,"red")
+plt.show()
  
 forecast_dta = results_ARIMA.forecast(30)[0]   #forecast  的值是ts  不是差分
 print forecast_dta
