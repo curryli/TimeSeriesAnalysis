@@ -38,7 +38,7 @@ def test_stationarity(timeseries):
 rcParams['figure.figsize'] = 15, 6
 
 dateparse = lambda dates: pd.datetime.strptime(dates, '%Y-%m')
-data = pd.read_csv('data.csv', parse_dates=True, index_col='date',date_parser=dateparse)
+data = pd.read_csv('sz.csv', parse_dates=True, index_col='date',date_parser=dateparse)
 
 
 ts = data[u'Z']

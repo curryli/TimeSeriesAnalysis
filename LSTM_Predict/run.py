@@ -19,12 +19,13 @@ def plot_results_multiple(predicted_data, true_data, prediction_len):
         padding = [None for p in range(i * prediction_len)]
         plt.plot(padding + data, label='Prediction')
         plt.legend()
-    plt.show()
+    plt.savefig('run_results.jpeg')
+    #plt.show()
 
 #Main Run Thread
 if __name__=='__main__':
 	global_start_time = time.time()
-	epochs  = 1
+	epochs  = 100
 	seq_len = 50
 
 	print('> Loading data... ')
