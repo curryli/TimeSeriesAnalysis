@@ -14,7 +14,7 @@ from matplotlib import pyplot
 import numpy
  
 # frame a sequence as a supervised learning problem
-def timeseries_to_supervised(data, lag=1):
+def timeseries_to_supervised(data, lag=5):
 	df = DataFrame(data)
 	columns = [df.shift(i) for i in range(1, lag+1)]
 	columns.append(df)
