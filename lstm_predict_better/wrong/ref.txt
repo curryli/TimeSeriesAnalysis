@@ -1,2 +1,0 @@
-https://machinelearningmastery.com/time-series-prediction-lstm-recurrent-neural-networks-python-keras/
-http://www.sohu.com/a/132923877_697750

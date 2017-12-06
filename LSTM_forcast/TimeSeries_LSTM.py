@@ -1,26 +1,24 @@
-#https://github.com/hawk31/nnet-ts
 import numpy as np
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
 from keras.optimizers import SGD
 from sklearn.preprocessing import StandardScaler
 import logging
+from keras.layers import Dense, Dropout
+from keras.layers.core import Dense, Dropout, Activation,Flatten, Reshape
+from keras.layers import Embedding, Masking
+from keras.layers import LSTM
+from sklearn.preprocessing import MinMaxScaler
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 
-class TimeSeriesNnet(object):
-	def __init__(self, hidden_layers = [20, 15, 5], activation_functions = ['relu', 'relu', 'relu'], 
-              optimizer = SGD(), loss = 'mean_absolute_error'):
-		self.hidden_layers = hidden_layers
-		self.activation_functions = activation_functions
+class TimeSeries_LSTM(object):
+	def __init__(self,  optimizer = 'Adam', loss = 'mean_squared_error'):
 		self.optimizer = optimizer
 		self.loss = loss
 
-		if len(self.hidden_layers) != len(self.activation_functions):
-			raise Exception("hidden_layers size must match activation_functions size")
-
-	def fit(self, timeseries, lag = 7, epochs = 10000, verbose = 2):
+	def fit(self, timeseries, lag = 20, epochs = 1000, verbose = 2):
 		self.timeseries = np.array(timeseries, dtype = "float64") # Apply log transformation por variance stationarity
 		self.lag = lag
 		self.n = len(timeseries)
@@ -41,24 +39,31 @@ class TimeSeriesNnet(object):
 		self.scaler.fit(self.X)
 		self.X = self.scaler.transform(self.X)
 
+
+		ts = 5
+		size_data = self.X.shape[1]
+		data_dim = size_data / ts
+
 		logging.info("Checking network consistency")
 		# Neural net architecture
 		self.nn = Sequential()
-		self.nn.add(Dense(self.hidden_layers[0], input_shape = (self.X.shape[1],)))
-		self.nn.add(Activation(self.activation_functions[0]))
+		print size_data, ts, data_dim
 
-		for layer_size, activation_function in zip(self.hidden_layers[1:],self.activation_functions[1:]):
-			self.nn.add(Dense(layer_size))
-			self.nn.add(Activation(activation_function))
+		self.nn.add(Reshape((ts, data_dim), input_shape=(size_data,)))
+
+		self.nn.add(LSTM(8, input_shape=(ts, data_dim), activation='sigmoid',return_sequences=True))
+		#self.nn.add(Dropout(0.5))
+		self.nn.add(LSTM(4, activation='sigmoid' ))
+		#self.nn.add(Dropout(0.5))
 
 		# Add final node
 		self.nn.add(Dense(1))
-		self.nn.add(Activation('linear'))
+		#self.nn.add(Activation('linear'))
 		self.nn.compile(loss = self.loss, optimizer = self.optimizer)
 
 		logging.info("Training neural net")
 		# Train neural net
-		self.nn.fit(self.X, self.y, nb_epoch = self.epochs, verbose = self.verbose)
+		self.nn.fit(self.X, self.y, nb_epoch = self.epochs, batch_size=1, verbose = self.verbose)
 
 	def predict_ahead(self, n_ahead = 1):
 		# Store predictions and predict iteratively

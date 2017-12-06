@@ -1,5 +1,12 @@
 #pip install nnet-ts
 from nnet_ts import *
+import numpy as np
+from keras.models import Sequential
+from keras.layers.core import Dense, Activation
+from keras.optimizers import SGD
+from sklearn.preprocessing import StandardScaler
+import logging
+import pandas as pd
 
 time_series = np.array(pd.read_csv("AirPassengers.csv")["x"])
 neural_net = TimeSeriesNnet(hidden_layers = [20, 15, 5], activation_functions = ['sigmoid', 'sigmoid', 'sigmoid'])
