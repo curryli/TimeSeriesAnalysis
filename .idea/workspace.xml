@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c2e26d48-3182-4493-838a-475bff9cc654" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nnet_ts/TimeSeriesNnet.py" afterPath="$PROJECT_DIR$/nnet_ts/TimeSeriesNnet.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nnet_ts/nnetts.py" afterPath="$PROJECT_DIR$/nnet_ts/nnetts.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nnet_ts/nnts.py" afterPath="$PROJECT_DIR$/nnet_ts/nnts.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,30 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TimeSeries_LSTM.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/nnet_ts/modify/TimeSeries_LSTM.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="905">
-              <caret line="79" column="31" lean-forward="true" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LSTM_ts.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nnet_ts/modify/LSTM_ts.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="13" column="48" lean-forward="false" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -81,6 +55,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="704" />
+    <option name="y" value="101" />
     <option name="width" value="1285" />
     <option name="height" value="1010" />
   </component>
@@ -99,30 +75,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="Time_Series_Analysis" type="b2602c69:ProjectViewProjectNode" />
               <item name="Time_Series_Analysis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Time_Series_Analysis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Time_Series_Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="Arima" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Time_Series_Analysis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Time_Series_Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="Arima" type="462c0819:PsiDirectoryNode" />
-              <item name="Mchnt_predict" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Time_Series_Analysis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Time_Series_Analysis" type="462c0819:PsiDirectoryNode" />
-              <item name="SVR" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -293,19 +253,18 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1285" height="1010" extended-state="0" />
-    <editor active="true" />
+    <frame x="704" y="101" width="1285" height="1010" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13002364" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13002364" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28698555" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28698555" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -326,13 +285,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1_valid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1932">
-          <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1_valid.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/ARMA_new.py" />
     <entry file="file://$PROJECT_DIR$/Arima/Arima_new.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -348,13 +301,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="759">
-          <caret line="45" column="19" lean-forward="true" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/agg_save.py" />
     <entry file="file://$PROJECT_DIR$/SX/Arima_SW_day.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -363,22 +310,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_multistep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1518">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_multistep.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/read_FE_good.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/agg_save.py" />
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1_valid.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="96" column="40" lean-forward="false" selection-start-line="96" selection-start-column="40" selection-end-line="96" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1_valid.py" />
     <entry file="file://$PROJECT_DIR$/Arima/TimesSeries.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -424,20 +359,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1746">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="118" column="6" lean-forward="true" selection-start-line="118" selection-start-column="6" selection-end-line="118" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.csv" />
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/Arima_iter.py" />
     <entry file="file://$PROJECT_DIR$/SX/Arima_diff_Z.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -464,18 +387,8 @@
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/Arima_diff.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/test.py" />
     <entry file="file://$PROJECT_DIR$/lstm_predict_better/data_use/Arima_ori.py" />
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_by_multistep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_bystep1.jpeg" />
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_by_multistep.py" />
     <entry file="file://$PROJECT_DIR$/Arima/Mchnt_predict/ARIMA_new.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -497,35 +410,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_timesteps_forecast.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" column="29" lean-forward="false" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_timesteps_forecast.py" />
     <entry file="file://$PROJECT_DIR$/nnet_ts/TimeSeriesNnet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="341">
           <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_predict.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1311">
-          <caret line="71" column="18" lean-forward="false" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lstm_predict_better/LSTM_predict.py" />
     <entry file="file://$PROJECT_DIR$/nnet_ts/nnts.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="253">
           <caret line="18" column="25" lean-forward="false" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -533,44 +430,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="14" column="36" lean-forward="false" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/TimeSeriesNnet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" column="21" lean-forward="false" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/nnetts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="43" lean-forward="true" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/LSTM_ts.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="13" column="48" lean-forward="false" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/TimeSeries_LSTM.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="905">
-          <caret line="79" column="31" lean-forward="true" selection-start-line="79" selection-start-column="31" selection-end-line="79" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/TimeSeriesNnet.py" />
+    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/nnetts.py" />
+    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/LSTM_ts.py" />
+    <entry file="file://$PROJECT_DIR$/nnet_ts/modify/TimeSeries_LSTM.py" />
   </component>
   <component name="masterDetails">
     <states>
