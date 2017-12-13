@@ -4,14 +4,24 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Activation
 from keras.optimizers import SGD
 from sklearn.preprocessing import StandardScaler
+from keras import backend as K
 import logging
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 
 class TimeSeriesNnet(object):
+
+	# def MAPE(y_true, y_pred):
+	# 	diff = K.abs((y_true - y_pred) / K.clip(K.abs(y_true), K.epsilon(), np.inf))
+	# 	return K.mean(diff, axis=-1)
+
+	def MAPE(y_true, y_pred):
+		diff = K.abs((y_true - y_pred) / K.abs(y_true))
+		return K.mean(diff, axis=-1)
+
 	def __init__(self, hidden_layers = [20, 15, 5], activation_functions = ['relu', 'relu', 'relu'], 
-              optimizer = SGD(), loss = 'mean_absolute_error'):
+              optimizer = SGD(), loss = MAPE):   #'mean_absolute_error'
 		self.hidden_layers = hidden_layers
 		self.activation_functions = activation_functions
 		self.optimizer = optimizer
@@ -20,7 +30,7 @@ class TimeSeriesNnet(object):
 		if len(self.hidden_layers) != len(self.activation_functions):
 			raise Exception("hidden_layers size must match activation_functions size")
 
-	def fit(self, timeseries, lag = 7, epochs = 10000, verbose = 2):
+	def fit(self, timeseries, lag = 7, epochs = 10000, verbose = 0):
 		self.timeseries = np.array(timeseries, dtype = "float64") # Apply log transformation por variance stationarity
 		self.lag = lag
 		self.n = len(timeseries)
@@ -58,7 +68,9 @@ class TimeSeriesNnet(object):
 
 		logging.info("Training neural net")
 		# Train neural net
-		self.nn.fit(self.X, self.y, nb_epoch = self.epochs, verbose = self.verbose)
+		hist = self.nn.fit(self.X, self.y, nb_epoch = self.epochs, verbose = self.verbose)
+
+		return hist.history
 
 	def predict_ahead(self, n_ahead = 1):
 		# Store predictions and predict iteratively
@@ -73,3 +85,10 @@ class TimeSeriesNnet(object):
 			self.timeseries = np.concatenate((self.timeseries, np.exp(self.next_pred[0,:])), axis = 0)
 
 		return self.predictions
+
+	def evaluate(self):
+		self.predictions = self.nn.predict(self.X)
+		#print self.predictions.shape, self.y.shape
+		MAPE = np.mean(np.fabs((self.predictions - self.y) / self.y))
+		MPE = np.mean((self.predictions - self.y) / self.y)
+		return {"MAPE":MAPE, "MPE":MPE}
